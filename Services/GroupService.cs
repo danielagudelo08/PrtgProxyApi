@@ -92,7 +92,7 @@ namespace PrtgProxyApi.Services
                 var filteredGroups = allGroups
                     .Where(g => TextNormalizer.Normalize(g.Name).Contains(TextNormalizer.Normalize(name)))
                     .Select(g => new GroupOptionDto
-                    {n
+                    {
                         Id = g.Id,
                         Name = g.Name
                     })
