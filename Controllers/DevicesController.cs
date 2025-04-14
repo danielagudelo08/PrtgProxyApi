@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgAPI; // Asegúrate de que tienes esta librería instalada
 using PrtgProxyApi.Domain.Contracts;
+using PrtgProxyApi.Domain.Request.Devices;
 using PrtgProxyApi.Services;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -37,6 +38,48 @@ namespace PrtgProxyApi.Controllers
             {
                 _logger.LogError(ex, "Error inesperado en GetDevices.");
                 return StatusCode(500, "Ocurrió un error interno.");
+            }
+        }
+
+        [HttpGet("devices/{id}")]
+        public async Task<IActionResult> GetDeviceById(int id)
+        {
+            try
+            {
+                var device = await _devicesService.GetDeviceByIdAsync(id);
+
+                if (device == null)
+                    return NotFound($"No se encontró un dispositivo con ID {id}.");
+
+                return Ok(device);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener el dispositivo por ID.");
+                return StatusCode(500, "Error al obtener el dispositivo.");
+            }
+        }
+
+        [HttpPost("CreateDevices")]
+        public async Task<IActionResult> CreateDevice([FromBody] CreateDeviceRequest request)
+        {
+            if (request == null)
+                return BadRequest("La solicitud no puede ser nula.");
+
+            try
+            {
+                var deviceId = await _devicesService.CreateDeviceAsync(request);
+                return CreatedAtAction(nameof(GetDeviceById), new { id = deviceId }, new { Id = deviceId });
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(ex, "Solicitud inválida para crear dispositivo.");
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error inesperado al crear el dispositivo.");
+                return StatusCode(500, "Ocurrió un error inesperado al crear el dispositivo.");
             }
         }
     }

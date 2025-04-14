@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using PrtgAPI;
 using PrtgProxyApi.Settings;
 using PrtgProxyApi.Domain.Contracts;
+using PrtgAPI.Parameters;
+using PrtgProxyApi.Domain.Request.Devices;
 
 namespace PrtgProxyApi.Services
 {
@@ -50,5 +52,72 @@ namespace PrtgProxyApi.Services
                 throw;
             }
         }
+
+        public async Task<Device?> GetDeviceByIdAsync(int id)
+        {
+            try
+            {
+                var device = await Task.Run(() => _client.GetDevice(id));
+
+                if (device == null)
+                {
+                    _logger.LogWarning($"No se encontró un dispositivo con ID {id}.");
+                }
+
+                return device;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al obtener el dispositivo con ID {id}.");
+                throw;
+            }
+        }
+
+
+
+        public async Task<int> CreateDeviceAsync(CreateDeviceRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Name) || string.IsNullOrWhiteSpace(request.Host))
+                throw new ArgumentException("El nombre y el host del dispositivo son obligatorios.");
+
+            try
+            {
+                var parameters = new NewDeviceParameters(request.Name, request.Host)
+                {
+                    Tags = request.Tags ?? [],
+                    AutoDiscoveryMode = request.AutoDiscoveryMode ?? AutoDiscoveryMode.Manual,
+                    AutoDiscoverySchedule = request.AutoDiscoverySchedule ?? AutoDiscoverySchedule.Once
+                };
+
+                var device = await Task.Run(() => _client.AddDevice(request.ParentId, parameters)) ?? throw new InvalidOperationException("No se pudo crear el dispositivo. El objeto resultante es nulo.");
+
+                // Propiedades opcionales via SetObjectProperty
+                if (!string.IsNullOrWhiteSpace(request.Location))
+                {
+                    _client.SetObjectProperty(device, ObjectProperty.Location, request.Location);
+                }
+
+                if (!string.IsNullOrWhiteSpace(request.Comments))
+                {
+                    _client.SetObjectProperty(device, ObjectProperty.Comments, request.Comments);
+                }
+
+                if (request.Priority.HasValue)
+                {
+                    _client.SetObjectProperty(device, ObjectProperty.Priority, (Priority)request.Priority.Value);
+                }
+
+                _logger.LogInformation($"Dispositivo '{request.Name}' creado exitosamente con ID: {device.Id}");
+
+                return device.Id;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al crear el dispositivo '{request?.Name}'.");
+                throw;
+            }
+        }
+
+
     }
 }

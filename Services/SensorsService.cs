@@ -55,18 +55,44 @@ namespace PrtgProxyApi.Services
             var parameters = new HttpSensorParameters
             {
                 Name = request.Name,
-                HttpRequestMethod = HttpRequestMethod.GET,
+                Url = request.Url,
+                HttpRequestMethod = request.HttpRequestMethod,
                 SensorType = SensorType.Http,
                 Tags = ["Informes"],
-                Priority = Priority.Three,
+                Priority = request.Priority,
                 Timeout = request.Timeout.HasValue ? (int)request.Timeout : 60,
-                Url = request.Url,
-
+                InheritInterval = false,
+                Interval = request.IntervalSeconds switch
+                {
+                    30 => ScanningInterval.ThirtySeconds,
+                    60 => ScanningInterval.SixtySeconds,
+                    300 => ScanningInterval.FiveMinutes,
+                    600 => ScanningInterval.TenMinutes,
+                    _ => ScanningInterval.FiveMinutes // Valor por defecto
+                }
             };
 
+            // Si se han proporcionado comentarios, establécelos después de crear el sensor
             var sensors = _client.AddSensor(request.DeviceId, parameters);
+            var sensorId = sensors.FirstOrDefault()?.Id ?? 0;
 
-            return sensors.FirstOrDefault()?.Id ?? 0;
+            // Si se creó el sensor y hay comentarios para agregar
+            if (sensorId > 0 && !string.IsNullOrEmpty(request.Comments))
+            {
+                try
+                {
+                    // Usar SetObjectProperty para establecer comentarios
+                    _client.SetObjectProperty(sensorId, ObjectProperty.Comments, request.Comments);
+                }
+                catch (Exception ex)
+                {
+                    // Opcional: manejar excepciones si la actualización de comentarios falla
+                    // pero el sensor ya fue creado
+                    Console.WriteLine($"Sensor creado pero no se pudieron añadir comentarios: {ex.Message}");
+                }
+            }
+
+            return sensorId;
         }
 
     }
