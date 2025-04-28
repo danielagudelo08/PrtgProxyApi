@@ -1,4 +1,4 @@
-﻿namespace PrtgProxyApi.Domain.DTOs.Groups
+﻿namespace PrtgProxyApi.DTOs.Groups
 {
     public class GroupSummaryDto
     {

@@ -1,6 +1,6 @@
 ﻿using PrtgAPI;
 
-namespace PrtgProxyApi.Domain.Request
+namespace PrtgProxyApi.Request
 {
     public class CreateHttpSensorRequest
     {
@@ -9,11 +9,11 @@ namespace PrtgProxyApi.Domain.Request
         public string Url { get; set; } = string.Empty;  // URL a monitorear
         public int DeviceId { get; set; } // ID del dispositivo donde se creará el sensor
         public HttpRequestMethod HttpRequestMethod { get; set; } = HttpRequestMethod.GET;
+        public Priority Priority { get; set; } = Priority.Three;
 
         // Propiedades opcionales
         public string? RequestMethod { get; set; } // GET, POST, PUT, DELETE
         public List<string>? Tags { get; set; }
-        public Priority Priority { get; set; } = Priority.Three;
         public string? Comments { get; set; }
         public int? ExpectedResponseCode { get; set; } = 200; // Por defecto 200
         public int? Timeout { get; set; } // Tiempo de espera en segundos

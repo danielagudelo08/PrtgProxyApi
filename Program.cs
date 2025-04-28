@@ -1,8 +1,11 @@
 using Microsoft.OpenApi.Models;
+using PrtgAPI;
+using PrtgProxyApi.Contracts.Services;
+using PrtgProxyApi.Domain;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Middlewares;
+using PrtgProxyApi.PrtgAPISatrack.Repositories;
 using PrtgProxyApi.Services;
-using PrtgProxyApi.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,18 +15,45 @@ builder.Services.AddHttpClient();  // HttpClient general
 builder.Services.AddMemoryCache();
 
 // Configurar PrtgSettings (asegúrate de que la sección en appsettings.json es correcta)
-builder.Services.Configure<PrtgSettings>(builder.Configuration.GetSection("PrtgApi"));
+// Primero: leer la configuración
+var prtgSettings = builder.Configuration.GetSection("PrtgApi").Get<PrtgProxyApi.PrtgAPISatrack.Settings.PrtgSettings>();
+
+builder.Services.AddSingleton<PrtgClient>(provider =>
+{
+    return new PrtgClient(
+        prtgSettings.Server,
+        prtgSettings.Username,
+        prtgSettings.Password,
+        AuthMode.Password,
+        prtgSettings.IgnoreSSL
+    );
+});
+
 
 // Registrar Services correctamente
 builder.Services.AddScoped<IDevicesService, DevicesService>();
 builder.Services.AddScoped<ISensorsService, SensorsService>();
 builder.Services.AddScoped<IGroupsService, GroupsService>();
+builder.Services.AddScoped<ISensorsServiceDomain, SensorsServiceDomain>();
+builder.Services.AddScoped<IDeviceServiceDomain, DeviceServiceDomain>();
+
+builder.Services.AddScoped<ISensorRepository, SensorRepository>();
+builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 
 // Configurar Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "PRTG API", Version = "v1" });
 });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBackstage",
+        policy => policy.WithOrigins("http://localhost:3000") // URL de Backstage
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
+
 
 var app = builder.Build();
 
@@ -46,6 +76,7 @@ else
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();
+app.UseCors("AllowBackstage");
 
 app.MapControllers();
 

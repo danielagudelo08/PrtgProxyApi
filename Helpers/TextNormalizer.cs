@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 
-namespace PrtgProxyApi.Domain.Helpers
+namespace PrtgProxyApi.Helpers
 {
     public static class TextNormalizer
     {

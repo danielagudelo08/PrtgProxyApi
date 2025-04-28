@@ -1,6 +1,6 @@
 ﻿using PrtgAPI;
 
-namespace PrtgProxyApi.Domain.Request.Devices
+namespace PrtgProxyApi.Request.Devices
 {
     public class CreateDeviceRequest
     {

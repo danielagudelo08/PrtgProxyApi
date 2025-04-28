@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
 using PrtgAPI;
-using PrtgProxyApi.Domain.Contracts;
-using PrtgProxyApi.Domain.DTOs.Groups;
-using PrtgProxyApi.Domain.Helpers;
+using PrtgProxyApi.Contracts.Services;
+using PrtgProxyApi.DTOs.Groups;
+using PrtgProxyApi.Helpers;
 using PrtgProxyApi.Settings;
 using System.Text.RegularExpressions;
 
@@ -34,7 +34,7 @@ namespace PrtgProxyApi.Services
             );
         }
 
-        public Task<List<PrtgAPI.Group>> GetAllGroupsAsync()
+        /*public Task<List<Group>> GetAllGroupsAsync()
         {
             try
             {
@@ -46,7 +46,7 @@ namespace PrtgProxyApi.Services
                 _logger.LogError(ex, "Error al obtener los grupos.");
                 throw;
             }
-        }
+        }*/
 
         public List<GroupSummaryDto> GetGroupSummaries()
         {

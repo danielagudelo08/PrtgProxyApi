@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgAPI;
-using PrtgProxyApi.Domain.Contracts;
-using PrtgProxyApi.Domain.DTOs.Groups;
+using PrtgProxyApi.Contracts.Services;
+using PrtgProxyApi.DTOs.Groups;
 using PrtgProxyApi.Services;
 
 namespace PrtgProxyApi.Controllers
@@ -19,12 +19,12 @@ namespace PrtgProxyApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<ActionResult<List<Group>>> GetGroups()
         {
             var groups = await _groupsService.GetAllGroupsAsync();
             return Ok(groups);
-        }
+        }*/
 
         [HttpGet("summary")]
         public ActionResult<List<GroupSummaryDto>> GetGroupSummaries()

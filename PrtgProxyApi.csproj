@@ -8,8 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="PrtgAPI" Version="0.9.19" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrtgProxyApi.Domain\PrtgProxyApi.Domain.csproj" />
+    <ProjectReference Include="..\PRTGProxyApi.Infraestructure\PrtgProxyApi.PrtgAPISatrack.csproj" />
   </ItemGroup>
 
 </Project>

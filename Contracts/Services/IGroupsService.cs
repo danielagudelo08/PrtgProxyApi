@@ -1,11 +1,11 @@
 ﻿using PrtgAPI;
-using PrtgProxyApi.Domain.DTOs.Groups;
+using PrtgProxyApi.DTOs.Groups;
 
-namespace PrtgProxyApi.Domain.Contracts
+namespace PrtgProxyApi.Contracts.Services
 {
     public interface IGroupsService
     {
-        Task<List<Group>> GetAllGroupsAsync();
+        //Task<List<Group>> GetAllGroupsAsync();
         List<GroupSummaryDto> GetGroupSummaries();
         List<GroupOptionDto> GetAvailableGroups();
         Task<List<GroupOptionDto>> SearchGroupsByNameAsync(string name);

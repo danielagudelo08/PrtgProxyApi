@@ -1,8 +1,9 @@
-﻿namespace PrtgProxyApi.Domain.DTOs.Groups
+﻿namespace PrtgProxyApi.DTOs.Devices
 {
-    public class GroupOptionDto
+    public class DeviceSelectDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
     }
+
 }

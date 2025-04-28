@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using PrtgAPI;
 using PrtgAPI.Parameters;
+using PrtgProxyApi.Contracts.Services;
+using PrtgProxyApi.Domain;
 using PrtgProxyApi.Domain.Contracts;
-using PrtgProxyApi.Domain.Request;
+using PrtgProxyApi.Helpers;
+using PrtgProxyApi.Request;
 using PrtgProxyApi.Settings;
 using System.Runtime;
 
@@ -46,6 +50,53 @@ namespace PrtgProxyApi.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al obtener sensores desde PRTG.");
+                throw;
+            }
+        }
+
+        public async Task<Sensor> GetSensorByIdAsync(int sensorId)
+        {
+            try
+            {
+                _logger.LogInformation($"Buscando sensor con ID: {sensorId}");
+
+                var sensor = await Task.Run(() => _client.GetSensor(sensorId));
+
+                if (sensor == null)
+                    _logger.LogWarning($"No se encontró el sensor con ID {sensorId}");
+                else
+                    _logger.LogInformation($"Sensor encontrado: {sensor.Name}");
+
+                return sensor;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al obtener el sensor con ID {sensorId}");
+                throw;
+            }
+        }
+        public async Task<List<Sensor>> GetSensorsByNameAsync(string name)
+        {
+            try
+            {
+                _logger.LogInformation("Buscando sensores que contengan el nombre: {SensorName}", name);
+
+                var normalizedName = TextNormalizer.Normalize(name);
+
+                var sensors = await Task.Run(() =>
+                    _client.GetSensors()
+                           .Where(s =>
+                               !string.IsNullOrWhiteSpace(s.Name) &&
+                               TextNormalizer.Normalize(s.Name).Contains(normalizedName))
+                           .ToList());
+
+                _logger.LogInformation("Se encontraron {Count} sensores con nombre similar a '{SensorName}'", sensors.Count, name);
+
+                return sensors;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al buscar sensores con nombre '{SensorName}'", name);
                 throw;
             }
         }

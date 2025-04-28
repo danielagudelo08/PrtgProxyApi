@@ -2,9 +2,10 @@
 using Microsoft.Extensions.Logging;
 using PrtgAPI;
 using PrtgProxyApi.Settings;
-using PrtgProxyApi.Domain.Contracts;
 using PrtgAPI.Parameters;
-using PrtgProxyApi.Domain.Request.Devices;
+using PrtgProxyApi.Request.Devices;
+using PrtgProxyApi.DTOs.Devices;
+using PrtgProxyApi.Contracts.Services;
 
 namespace PrtgProxyApi.Services
 {
@@ -52,6 +53,32 @@ namespace PrtgProxyApi.Services
                 throw;
             }
         }
+
+        public async Task<List<DeviceSelectDto>> GetDevicesForSelectAsync()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo dispositivos (solo id y nombre) desde PRTG.");
+
+                var devices = await Task.Run(() => _client
+                    .GetDevices()
+                    .Select(d => new DeviceSelectDto
+                    {
+                        Id = d.Id,
+                        Name = d.Name
+                    })
+                    .ToList());
+
+                _logger.LogInformation($"Se encontraron {devices.Count} dispositivos.");
+                return devices;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener dispositivos desde PRTG.");
+                throw;
+            }
+        }
+
 
         public async Task<Device?> GetDeviceByIdAsync(int id)
         {

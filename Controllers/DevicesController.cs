@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgAPI; // Asegúrate de que tienes esta librería instalada
-using PrtgProxyApi.Domain.Contracts;
-using PrtgProxyApi.Domain.Request.Devices;
+using PrtgProxyApi.Contracts.Services;
+using PrtgProxyApi.Request.Devices;
 using PrtgProxyApi.Services;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -40,6 +40,22 @@ namespace PrtgProxyApi.Controllers
                 return StatusCode(500, "Ocurrió un error interno.");
             }
         }
+
+        [HttpGet("select")]
+        public async Task<IActionResult> GetDevicesForSelect()
+        {
+            try
+            {
+                var devices = await _devicesService.GetDevicesForSelectAsync();
+                return Ok(devices);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener dispositivos para el select.");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
 
         [HttpGet("devices/{id}")]
         public async Task<IActionResult> GetDeviceById(int id)

@@ -1,29 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgProxyApi.Contracts.Services;
+using PrtgProxyApi.Domain.Contracts;
+using PrtgProxyApi.PrtgAPISatrack;
 using PrtgProxyApi.Request;
-using PrtgProxyApi.Services;
 
 namespace PrtgProxyApi.Controllers
 {
     [ApiController]
-    [Route("api/sensors")]
-    public class SensorsController : ControllerBase
+    [Route("api/v2/sensors")]
+    public class SensorsDomainController : ControllerBase
     {
-        private readonly ISensorsService _sensorsService;
+        private readonly ISensorsServiceDomain _sensorsService;
         private readonly ILogger<SensorsController> _logger;
 
-        public SensorsController(ISensorsService sensorsService, ILogger<SensorsController> logger)
+        public SensorsDomainController(ISensorsServiceDomain sensorsService, ILogger<SensorsController> logger)
         {
             _sensorsService = sensorsService;
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetSensors()
-        {
-            var sensors = await _sensorsService.GetSensorsAsync();
-            return Ok(sensors);
-        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSensorById(int id)
@@ -52,7 +47,7 @@ namespace PrtgProxyApi.Controllers
                 return BadRequest("El parámetro 'name' es obligatorio.");
             }
 
-            var sensors = await _sensorsService.GetSensorsByNameAsync(name);
+            var sensors = await _sensorsService.GetSensorsByNameAsyncDomain(name);
 
             if (sensors == null || sensors.Count == 0)
             {
@@ -62,12 +57,12 @@ namespace PrtgProxyApi.Controllers
             return Ok(sensors);
         }
 
-        [HttpPost("create-http-sensor")]
-        public IActionResult CreateHttpSensor([FromBody] CreateHttpSensorRequest request)
+        [HttpPost("create-sensor")]
+        public IActionResult CreateHttpSensorDomain([FromBody] CreateHttpSensorRequestAPI request)
         {
             try
             {
-                var sensorId = _sensorsService.CreateHttpSensor(request);
+                var sensorId = _sensorsService.CreateHttpSensorAsync(request);
                 return Ok(new { Message = "Sensor HTTP creado con éxito", SensorId = sensorId });
             }
             catch (Exception ex)
@@ -76,22 +71,5 @@ namespace PrtgProxyApi.Controllers
             }
         }
 
-        [HttpGet("namev2")]
-        public async Task<IActionResult> GetSensorByNameV2([FromQuery] string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                return BadRequest("El parámetro 'name' es obligatorio.");
-            }
-
-            var sensors = await _sensorsService.GetSensorsByNameAsync(name);
-
-            if (sensors == null || sensors.Count == 0)
-            {
-                return NotFound($"No se encontraron sensores que coincidan con el nombre '{name}'.");
-            }
-
-            return Ok(sensors);
-        }
     }
 }
