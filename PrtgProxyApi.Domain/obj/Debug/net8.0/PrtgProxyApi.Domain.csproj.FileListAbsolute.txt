@@ -6,6 +6,7 @@ C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.AssemblyInfoInputs.cache
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.AssemblyInfo.cs
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.sourcelink.json
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.dll
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\refint\PrtgProxyApi.Domain.dll
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.pdb

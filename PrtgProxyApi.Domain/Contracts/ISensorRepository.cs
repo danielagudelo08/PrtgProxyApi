@@ -1,5 +1,5 @@
 ﻿using PrtgProxyApi.Domain.DTOs.Sensors;
-using PrtgProxyApi.PrtgAPISatrack;
+using PrtgProxyApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,6 @@ namespace PrtgProxyApi.Domain.Contracts
     {
         Task<List<SensorEntity>> GetSensorsByNameAsync(string name);
         Task<int> CreateHttpSensorAsync(CreateSensorEntity request);
-        Task<SensorEntity> GetSensorByIdAsync(int sensorId);
+        Task<SensorEntity?> GetSensorByIdAsync(int sensorId);
     }
 }

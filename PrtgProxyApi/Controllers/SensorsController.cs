@@ -1,23 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Domain.DTOs.Sensors;
-using PrtgProxyApi.Domain.Mappers;
-using PrtgProxyApi.PrtgAPISatrack;
-using PrtgProxyApi.Request;
 
 namespace PrtgProxyApi.Controllers
 {
     [ApiController]
-    [Route("api/v2/sensors")]
-    public class SensorsDomainController : ControllerBase
+    [Route("api/v1/[controller]")]
+    public class SensorsController : ControllerBase
     {
-        private readonly ISensorsServiceDomain _sensorsService;
-        private readonly ILogger<SensorsDomainController> _logger;
+        private readonly ISensorsService _sensorsService;
+        private readonly ILogger<SensorsController> _logger;
 
-        public SensorsDomainController(ISensorsServiceDomain sensorsService, ILogger<SensorsDomainController> logger)
+        public SensorsController(ISensorsService sensorsService, ILogger<SensorsController> logger)
         {
-            _sensorsService = sensorsService;
-            _logger = logger;
+            _sensorsService = sensorsService ?? throw new ArgumentNullException(nameof(sensorsService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -63,8 +60,7 @@ namespace PrtgProxyApi.Controllers
         {
             try
             {
-                var sensorDomain = SensorMapper.ConvertRequestSensorHTTPToDtoDomain(request);
-                var sensorId = _sensorsService.CreateHttpSensorAsync(sensorDomain);
+                var sensorId = _sensorsService.CreateHttpSensorAsync(request);
                 return Ok(new { Message = "Sensor HTTP creado con éxito", SensorId = sensorId });
             }
             catch (Exception ex)

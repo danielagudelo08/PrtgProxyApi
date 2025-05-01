@@ -1,22 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Domain.DTOs.Devices;
-using PrtgProxyApi.Domain.Mappers;
-using PrtgProxyApi.Request.Devices;
 
 namespace PrtgProxyApi.Controllers
 {
     [ApiController]
-    [Route("api/v2/[controller]")]
-    public class DevicesDomainController : ControllerBase
+    [Route("api/v1/[controller]")]
+    public class DevicesController : ControllerBase
     {
-        private readonly IDeviceServiceDomain _devicesService;
-        private readonly ILogger<DevicesDomainController> _logger;
+        private readonly IDeviceService _devicesService;
+        private readonly ILogger<DevicesController> _logger;
 
-        public DevicesDomainController(IDeviceServiceDomain devicesService, ILogger<DevicesDomainController> logger)
+        public DevicesController(IDeviceService devicesService, ILogger<DevicesController> logger)
         {
-            _devicesService = devicesService;
-            _logger = logger;
+            _devicesService = devicesService ?? throw new ArgumentNullException(nameof(devicesService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
@@ -62,8 +60,7 @@ namespace PrtgProxyApi.Controllers
 
             try
             {
-                var requestDomain = DeviceMapper.ToDomainRequest(request);
-                var deviceId = await _devicesService.CreateDeviceAsync(requestDomain);
+                var deviceId = await _devicesService.CreateDeviceAsync(request);
                 return CreatedAtAction(nameof(GetDeviceById), new { id = deviceId }, new { Id = deviceId });
             }
             catch (ArgumentException ex)

@@ -8,6 +8,7 @@ C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPISatrack.AssemblyInfoInputs.cache
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPISatrack.AssemblyInfo.cs
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPISatrack.csproj.CoreCompileInputs.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPISatrack.sourcelink.json
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProx.F1A1421B.Up2Date
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPISatrack.dll
 C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\refint\PrtgProxyApi.PrtgAPISatrack.dll

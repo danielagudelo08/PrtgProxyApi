@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PrtgAPI;
-using PrtgAPI.Parameters;
-using PrtgProxyApi.Domain;
 using PrtgProxyApi.Domain.Contracts;
-using PrtgProxyApi.Domain.DTOs.Sensors;
-using PrtgProxyApi.Domain.Enums;
+using PrtgProxyApi.Domain.Entities;
 using PrtgProxyApi.PrtgAPISatrack.Mapper;
 
 
@@ -22,9 +19,9 @@ namespace PrtgProxyApi.PrtgAPISatrack.Repositories
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<SensorEntity> GetSensorByIdAsync(int sensorId)
+        public async Task<SensorEntity?> GetSensorByIdAsync(int sensorId)
         {
-            _logger.LogInformation($"Buscando sensor con ID: {sensorId}");
+            _logger.LogInformation("Buscando sensor con ID: {sensorId}", sensorId);
 
             try
             {
@@ -32,16 +29,16 @@ namespace PrtgProxyApi.PrtgAPISatrack.Repositories
 
                 if (sensor == null)
                 {
-                    _logger.LogWarning($"No se encontró el sensor con ID {sensorId}");
+                    _logger.LogWarning("No se encontró el sensor con ID {sensorId}", sensorId);
                     return null;
                 }
 
-                _logger.LogInformation($"Sensor encontrado: {sensor.Name}");
+                _logger.LogInformation("Sensor encontrado: {sensor.Name}", sensor.Name);
                 return MapperSensor.MapToDomainSensor(sensor);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error al obtener el sensor con ID {sensorId}");
+                _logger.LogError(ex, "Error al obtener el sensor con ID {sensorId}", sensorId);
                 throw; // Propaga la excepción para manejo posterior
             }
         }
@@ -56,10 +53,10 @@ namespace PrtgProxyApi.PrtgAPISatrack.Repositories
                     .Where(s => s.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
                     .ToList());
 
-                if (sensorsFromPrtg == null || !sensorsFromPrtg.Any())
+                if (sensorsFromPrtg == null || sensorsFromPrtg.Count == 0)
                 {
                     _logger.LogWarning("No se encontraron sensores con el nombre: {SensorName}", name);
-                    return new List<SensorEntity>(); // Retorna una lista vacía si no hay resultados
+                    return []; // Retorna una lista vacía si no hay resultados
                 }
 
                 return sensorsFromPrtg.Select(s => MapperSensor.MapToDomainSensor(s)).ToList();

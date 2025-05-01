@@ -1,22 +1,18 @@
 ﻿using Microsoft.Extensions.Logging;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Domain.DTOs.Devices;
+using PrtgProxyApi.Domain.Entities;
+using PrtgProxyApi.Domain.Mappers;
 using PrtgProxyApi.DTOs.Devices;
-using PrtgProxyApi.Request.Devices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrtgProxyApi.Domain
 {
-    public class DeviceServiceDomain: IDeviceServiceDomain
+    public class DeviceService: IDeviceService
     {
         private readonly IDeviceRepository _deviceRepository;
-        private readonly ILogger<DeviceServiceDomain> _logger;
+        private readonly ILogger<DeviceService> _logger;
 
-        public DeviceServiceDomain(IDeviceRepository deviceRepository, ILogger<DeviceServiceDomain> logger)
+        public DeviceService(IDeviceRepository deviceRepository, ILogger<DeviceService> logger)
         {
             _deviceRepository = deviceRepository ?? throw new ArgumentNullException(nameof(deviceRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -31,7 +27,7 @@ namespace PrtgProxyApi.Domain
                 // Llamada al repositorio que ya mapea y retorna el DTO
                 var devices = await _deviceRepository.GetDevicesForSelectAsync();
 
-                _logger.LogInformation($"Se encontraron {devices.Count} dispositivos.");
+                _logger.LogInformation("Se encontraron {devices.Count} dispositivos.", devices.Count);
                 return devices;
             }
             catch (Exception ex)
@@ -55,12 +51,14 @@ namespace PrtgProxyApi.Domain
             }   
         }
 
-        public async Task<int> CreateDeviceAsync(CreateDeviceEntity request)
+        public async Task<int> CreateDeviceAsync(CreateDeviceDTO request)
         {
             try
             {
                 _logger.LogInformation("Intentando crear dispositivo.");
-                return await _deviceRepository.CreateDeviceAsync(request);
+
+                var requestDomain = DeviceMapper.ToDomainRequest(request);
+                return await _deviceRepository.CreateDeviceAsync(requestDomain);
             }
             catch (Exception ex)
             {

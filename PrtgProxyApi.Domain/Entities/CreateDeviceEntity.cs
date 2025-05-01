@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrtgProxyApi.Domain
+namespace PrtgProxyApi.Domain.Entities
 {
     public class CreateDeviceEntity
     {

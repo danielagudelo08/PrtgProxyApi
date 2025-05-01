@@ -1,13 +1,8 @@
 ﻿using PrtgAPI;
 using PrtgAPI.Parameters;
-using PrtgProxyApi.Domain;
-using PrtgProxyApi.Domain.DTOs.Sensors;
+using PrtgProxyApi.Domain.Entities;
 using PrtgProxyApi.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace PrtgProxyApi.PrtgAPISatrack.Mapper

@@ -1,10 +1,5 @@
 ﻿using PrtgProxyApi.Domain.DTOs.Devices;
-using PrtgProxyApi.Request.Devices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PrtgProxyApi.Domain.Entities;
 
 namespace PrtgProxyApi.Domain.Mappers
 {

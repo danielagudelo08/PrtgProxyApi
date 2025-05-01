@@ -29,8 +29,8 @@ builder.Services.AddSingleton<PrtgClient>(provider =>
 
 
 // Registrar Services correctamente
-builder.Services.AddScoped<ISensorsServiceDomain, SensorsServiceDomain>();
-builder.Services.AddScoped<IDeviceServiceDomain, DeviceServiceDomain>();
+builder.Services.AddScoped<ISensorsService, SensorService>();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
 
 builder.Services.AddScoped<ISensorRepository, SensorRepository>();
 builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();

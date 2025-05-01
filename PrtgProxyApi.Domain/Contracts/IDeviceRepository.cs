@@ -1,6 +1,6 @@
 ﻿using PrtgProxyApi.Domain.DTOs.Devices;
+using PrtgProxyApi.Domain.Entities;
 using PrtgProxyApi.DTOs.Devices;
-using PrtgProxyApi.Request.Devices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
