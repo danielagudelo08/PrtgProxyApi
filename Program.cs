@@ -1,11 +1,9 @@
 using Microsoft.OpenApi.Models;
 using PrtgAPI;
-using PrtgProxyApi.Contracts.Services;
 using PrtgProxyApi.Domain;
 using PrtgProxyApi.Domain.Contracts;
-using PrtgProxyApi.Middlewares;
 using PrtgProxyApi.PrtgAPISatrack.Repositories;
-using PrtgProxyApi.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,9 +29,6 @@ builder.Services.AddSingleton<PrtgClient>(provider =>
 
 
 // Registrar Services correctamente
-builder.Services.AddScoped<IDevicesService, DevicesService>();
-builder.Services.AddScoped<ISensorsService, SensorsService>();
-builder.Services.AddScoped<IGroupsService, GroupsService>();
 builder.Services.AddScoped<ISensorsServiceDomain, SensorsServiceDomain>();
 builder.Services.AddScoped<IDeviceServiceDomain, DeviceServiceDomain>();
 
@@ -71,9 +66,6 @@ else
 {
     app.UseExceptionHandler("/error");  // Manejador de errores en producción
 }
-
-// Middleware global de excepciones (siempre debe estar habilitado)
-app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();
 app.UseCors("AllowBackstage");

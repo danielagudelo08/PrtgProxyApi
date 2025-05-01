@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PrtgProxyApi.Contracts.Services;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Domain.DTOs.Devices;
 using PrtgProxyApi.Domain.Mappers;
 using PrtgProxyApi.Request.Devices;
-using PrtgProxyApi.Services;
 
 namespace PrtgProxyApi.Controllers
 {
@@ -13,9 +11,9 @@ namespace PrtgProxyApi.Controllers
     public class DevicesDomainController : ControllerBase
     {
         private readonly IDeviceServiceDomain _devicesService;
-        private readonly ILogger<DevicesService> _logger;
+        private readonly ILogger<DevicesDomainController> _logger;
 
-        public DevicesDomainController(IDeviceServiceDomain devicesService, ILogger<DevicesService> logger)
+        public DevicesDomainController(IDeviceServiceDomain devicesService, ILogger<DevicesDomainController> logger)
         {
             _devicesService = devicesService;
             _logger = logger;

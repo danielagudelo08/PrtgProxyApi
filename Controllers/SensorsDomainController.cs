@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PrtgProxyApi.Contracts.Services;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Domain.DTOs.Sensors;
 using PrtgProxyApi.Domain.Mappers;
@@ -13,9 +12,9 @@ namespace PrtgProxyApi.Controllers
     public class SensorsDomainController : ControllerBase
     {
         private readonly ISensorsServiceDomain _sensorsService;
-        private readonly ILogger<SensorsController> _logger;
+        private readonly ILogger<SensorsDomainController> _logger;
 
-        public SensorsDomainController(ISensorsServiceDomain sensorsService, ILogger<SensorsController> logger)
+        public SensorsDomainController(ISensorsServiceDomain sensorsService, ILogger<SensorsDomainController> logger)
         {
             _sensorsService = sensorsService;
             _logger = logger;
