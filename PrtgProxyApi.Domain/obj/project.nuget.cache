@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "X05qcEiZyss=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Daniel_agudelo\\Documents\\Plan Carrera\\ApiPRTG\\PrtgProxyApi\\PrtgProxyApi.Domain\\PrtgProxyApi.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.4\\microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.4\\microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.4\\system.diagnostics.diagnosticsource.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

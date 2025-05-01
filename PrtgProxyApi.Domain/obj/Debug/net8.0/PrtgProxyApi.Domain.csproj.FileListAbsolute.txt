@@ -1,0 +1,12 @@
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\bin\Debug\net8.0\PrtgProxyApi.Domain.deps.json
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\bin\Debug\net8.0\PrtgProxyApi.Domain.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\bin\Debug\net8.0\PrtgProxyApi.Domain.pdb
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.csproj.AssemblyReference.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.AssemblyInfoInputs.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.AssemblyInfo.cs
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\refint\PrtgProxyApi.Domain.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\PrtgProxyApi.Domain.pdb
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PrtgProxyApi.Domain\obj\Debug\net8.0\ref\PrtgProxyApi.Domain.dll

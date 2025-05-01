@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "BC1wJ3lMfZQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Daniel_agudelo\\Documents\\Plan Carrera\\ApiPRTG\\PrtgProxyApi\\PRTGProxyApi.Infraestructure\\PrtgProxyApi.PrtgAPISatrack.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.4\\microsoft.extensions.configuration.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.4\\microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.4\\microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.options\\9.0.4\\microsoft.extensions.options.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.4\\microsoft.extensions.primitives.9.0.4.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\prtgapi\\0.9.19\\prtgapi.0.9.19.nupkg.sha512",
+    "C:\\Users\\Daniel_agudelo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.4\\system.diagnostics.diagnosticsource.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

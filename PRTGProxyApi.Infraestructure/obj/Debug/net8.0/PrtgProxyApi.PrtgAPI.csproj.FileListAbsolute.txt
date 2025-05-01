@@ -1,0 +1,15 @@
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\bin\Debug\net8.0\PrtgProxyApi.PrtgAPI.deps.json
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\bin\Debug\net8.0\PrtgProxyApi.PrtgAPI.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\bin\Debug\net8.0\PrtgProxyApi.PrtgAPI.pdb
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\bin\Debug\net8.0\PrtgProxyApi.Domain.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\bin\Debug\net8.0\PrtgProxyApi.Domain.pdb
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.csproj.AssemblyReference.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.AssemblyInfoInputs.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.AssemblyInfo.cs
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.csproj.CoreCompileInputs.cache
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProx.048B0620.Up2Date
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\refint\PrtgProxyApi.PrtgAPI.dll
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\PrtgProxyApi.PrtgAPI.pdb
+C:\Users\Daniel_agudelo\Documents\Plan Carrera\ApiPRTG\PrtgProxyApi\PRTGProxyApi.Infraestructure\obj\Debug\net8.0\ref\PrtgProxyApi.PrtgAPI.dll
