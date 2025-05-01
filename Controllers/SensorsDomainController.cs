@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PrtgProxyApi.Contracts.Services;
 using PrtgProxyApi.Domain.Contracts;
+using PrtgProxyApi.Domain.DTOs.Sensors;
+using PrtgProxyApi.Domain.Mappers;
 using PrtgProxyApi.PrtgAPISatrack;
 using PrtgProxyApi.Request;
 
@@ -58,11 +60,12 @@ namespace PrtgProxyApi.Controllers
         }
 
         [HttpPost("create-sensor")]
-        public IActionResult CreateHttpSensorDomain([FromBody] CreateHttpSensorRequestAPI request)
+        public IActionResult CreateHttpSensorDomain([FromBody] CreateHttpSensorDTO request)
         {
             try
             {
-                var sensorId = _sensorsService.CreateHttpSensorAsync(request);
+                var sensorDomain = SensorMapper.ConvertRequestSensorHTTPToDtoDomain(request);
+                var sensorId = _sensorsService.CreateHttpSensorAsync(sensorDomain);
                 return Ok(new { Message = "Sensor HTTP creado con éxito", SensorId = sensorId });
             }
             catch (Exception ex)
