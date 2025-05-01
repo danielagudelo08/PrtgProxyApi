@@ -12,6 +12,7 @@ namespace PrtgProxyApi.Domain.Contracts
     {
         Task<List<SensorEntity>> GetSensorsByNameAsyncDomain(string name);
         Task<int> CreateHttpSensorAsync(CreateHttpSensorDTO request);
+        Task<int> CreateExecScriptSensorAsync(CreateExecSensorDTO request);
         Task<SensorEntity?> GetSensorByIdAsync(int sensorId);
 
     }

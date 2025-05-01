@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrtgProxyApi.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ffde8121f179828b9d488117db261c1ed4e6e51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab38858f23780ef7d5f3c105d1e407135b25ef8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrtgProxyApi.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrtgProxyApi.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

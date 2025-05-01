@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PrtgProxyApi.Domain;
 using PrtgProxyApi.Domain.Contracts;
 using PrtgProxyApi.Domain.DTOs.Sensors;
 
@@ -58,6 +59,11 @@ namespace PrtgProxyApi.Controllers
         [HttpPost("create-sensor")]
         public IActionResult CreateHttpSensorDomain([FromBody] CreateHttpSensorDTO request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 var sensorId = _sensorsService.CreateHttpSensorAsync(request);
@@ -66,6 +72,26 @@ namespace PrtgProxyApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { Message = "Error al crear el sensor", Details = ex.Message });
+            }
+        }
+
+        [HttpPost("create-exec-script")]
+        public async Task<IActionResult> CreateExecScriptSensor([FromBody] CreateExecSensorDTO request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var sensorId = await _sensorsService.CreateExecScriptSensorAsync(request);
+                return Ok(new { SensorId = sensorId });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al crear el sensor de tipo Exec Script.");
+                return StatusCode(500, "Error interno del servidor.");
             }
         }
 

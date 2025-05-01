@@ -8,16 +8,12 @@
 
   <ItemGroup>
     <Compile Remove="Contracts\**" />
-    <Compile Remove="DTOs\**" />
     <Compile Remove="Helpers\**" />
     <Content Remove="Contracts\**" />
-    <Content Remove="DTOs\**" />
     <Content Remove="Helpers\**" />
     <EmbeddedResource Remove="Contracts\**" />
-    <EmbeddedResource Remove="DTOs\**" />
     <EmbeddedResource Remove="Helpers\**" />
     <None Remove="Contracts\**" />
-    <None Remove="DTOs\**" />
     <None Remove="Helpers\**" />
   </ItemGroup>
 

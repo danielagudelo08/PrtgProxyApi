@@ -58,13 +58,19 @@ namespace PrtgProxyApi.Domain
                     _logger.LogError(ex, "Error al buscar sensores con nombre '{SensorName}'", name);
                     throw;
                 }
-            }
-
-            public async Task<int> CreateHttpSensorAsync(CreateHttpSensorDTO request)
-            {
-                var sensorDomain = SensorMapper.ConvertRequestSensorHTTPToDtoDomain(request);
-                return await _sensorRepository.CreateHttpSensorAsync(sensorDomain);
-            }
         }
+
+        public async Task<int> CreateHttpSensorAsync(CreateHttpSensorDTO request)
+        {
+            var sensorDomain = SensorMapper.ConvertRequestSensorHTTPToEntity(request);
+            return await _sensorRepository.CreateHttpSensorAsync(sensorDomain);
+        }
+
+        public async Task<int> CreateExecScriptSensorAsync(CreateExecSensorDTO request)
+        {
+            
+            return await _sensorRepository.CreateExecScriptSensorAsync(request);
+        }
+    }
 
 }
