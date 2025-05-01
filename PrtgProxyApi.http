@@ -1,6 +1,0 @@
-@PrtgProxyApi_HostAddress = http://localhost:5120
-
-GET {{PrtgProxyApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
